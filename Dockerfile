@@ -1,16 +1,16 @@
 # Use official OpenJDK base image (small + stable)
 
 # Build Stage
-FROM maven:3.8.7-openjdk-17 AS build
+FROM docker.io/library/maven:3.8.7-openjdk-17 AS build
 WORKDIR /Javaapp
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Package Stage
-FROM openjdk:17-jdk-slim
+FROM docker.io/library/openjdk:17-jdk-slim
 WORKDIR Javaapp
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /Javaapp/target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
 
