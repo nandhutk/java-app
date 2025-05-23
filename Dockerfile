@@ -1,7 +1,7 @@
 # Use official OpenJDK base image (small + stable)
 
 # Build Stage
-FROM docker.io/library/maven:3.8.7-openjdk-17 AS build
+FROM docker.io/library/maven:3.8.6-openjdk-17 AS build
 WORKDIR /Javaapp
 COPY pom.xml .
 COPY src ./src
