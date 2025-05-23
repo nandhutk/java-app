@@ -5,7 +5,6 @@ FROM docker.io/library/maven:3.9.6-amazoncorretto-17 AS build
 WORKDIR /Javaapp
 COPY pom.xml .
 COPY src ./src
-RUN mvn clean package -DskipTests
 
 # Package Stage
 FROM docker.io/library/amazoncorretto:17-alpine-jdk
