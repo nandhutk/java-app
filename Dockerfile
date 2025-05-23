@@ -5,7 +5,7 @@
 # Set working directory inside the container
 FROM docker.io/library/openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+COPY  /app/target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
 
